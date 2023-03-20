@@ -11,15 +11,18 @@
     "test": "npx lambdatest-cypress run"
   },
   "author": "Mayank Maurya",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "cypress": "6.2.1",
-    "lambdatest-cypress-cli": "git+https://github.com/LambdaTest/lambdatest-cypress-cli.git",
-    "typescript": "3.7.4",
-    "@playwright/test": "1.20.2",
-    "playwright": "1.20.2",
+    "@applitools/eyes-cypress": "^3.27.8",
     "@cucumber/cucumber": "^7.3.2",
-    "@lambdatest/node-fetch-sessions": "^1.0.4"
+    "@faker-js/faker": "^7.6.0",
+    "@lambdatest/node-fetch-sessions": "^1.0.4",
+    "@playwright/test": "1.20.2",
+    "cypress": "^10.11.0",
+    "cypress-image-diff-js": "^1.22.0",
+    "cypress-mochawesome-reporter": "^3.2.3",
+    "lambdatest-cypress-cli": "^3.0.11",
+    "playwright": "1.20.2",
+    "typescript": "3.7.4"
   }
 }

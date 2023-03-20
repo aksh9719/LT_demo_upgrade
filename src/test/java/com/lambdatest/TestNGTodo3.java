@@ -3,10 +3,13 @@ package com.lambdatest;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
@@ -20,32 +23,22 @@ public class TestNGTodo3 {
 
     @BeforeMethod
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
-        String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
-        String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
-        String hub = "@hub.lambdatest.com/wd/hub";
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "MacOS Catalina");
-        caps.setCapability("browserName", "Chrome");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
-        caps.setCapability("performance",true);
-        caps.setCapability("network", true);
-        caps.setCapability("console", true);
-        caps.setCapability("networkThrottling", "Regular 4G");
-        caps.setCapability("commandLog", true);
-        caps.setCapability("systemLog", true);
-        caps.setCapability("terminal", true);
-        caps.setCapability("video", true);
-
+        FirefoxOptions browserOptions = new FirefoxOptions();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("109.0");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "akashg");
+        ltOptions.put("accessKey", "NwTHBCKHbxKOIYZJdRersjTbKSvOUrzLtkWeM38ghpyRC8Sixh");
+        ltOptions.put("visual", true);
+        ltOptions.put("video", true);
+        ltOptions.put("network", true);
+        ltOptions.put("project", "Untitled");
+        browserOptions.setCapability("LT:Options", ltOptions);
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
-        caps.setCapability("tags", Tags);
+        browserOptions.setCapability("tags", Tags);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        driver = new RemoteWebDriver(new URL("https://@hub.lambdatest.com/wd/hub"), browserOptions);
     }
 
     @Test
@@ -98,7 +91,7 @@ public class TestNGTodo3 {
 
         // Let's also assert that the todo we added is present in the list.
 
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
+        spanText = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[9]/span")).getText();
         Assert.assertEquals("Get Taste of Lambda and Sticiuk to It", spanText);
         Status = "passed";
         Thread.sleep(800);

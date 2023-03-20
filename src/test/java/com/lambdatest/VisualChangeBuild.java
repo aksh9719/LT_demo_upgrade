@@ -3,8 +3,10 @@ package com.lambdatest;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
@@ -24,29 +26,23 @@ public class VisualChangeBuild {
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
         ;
         String hub = "@beta-smartui-hub.lambdatest.com/wd/hub";
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platform", "MacOS Catalina");
-        caps.setCapability("browserName", "Chrome");
-        caps.setCapability("version", "latest");
-        caps.setCapability("build", "TestNG With Java - Visual Build");
-        caps.setCapability("name", m.getName() + this.getClass().getName());
-        caps.setCapability("plugin", "git-testng");
-        caps.setCapability("performance",true);
-        caps.setCapability("network", true);
-        caps.setCapability("console", true);
-        caps.setCapability("networkThrottling", "Regular 4G");
-        caps.setCapability("commandLog", true);
-        caps.setCapability("systemLog", true);
-        caps.setCapability("terminal", true);
-        caps.setCapability("video", true);
-        caps.setCapability("smartUI.project", "Demo");
-
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("MacOS Catalina");
+        browserOptions.setBrowserVersion("109.0");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("project", "Untitled");
+        ltOptions.put("networkThrottling", "Regular 4G");
+        ltOptions.put("w3c", true);
+        ltOptions.put("plugin", "git-testng");
+        ltOptions.put("commandLog", true);
+        ltOptions.put("video", true);
+        ltOptions.put("smartUI.project", "Demo");
+        browserOptions.setCapability("LT:Options", ltOptions);
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
-        caps.setCapability("tags", Tags);
+        browserOptions.setCapability("tags", Tags);
 
-        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), browserOptions);
     }
 
     @Test
@@ -55,7 +51,7 @@ public class VisualChangeBuild {
         System.out.println("Loading Url");
         Thread.sleep(100);
         driver.get("https://lambdatest.github.io/sample-todo-app/");
-        
+
         System.out.println("Checking Box");
         driver.findElement(By.name("li1")).click();
 
@@ -99,7 +95,7 @@ public class VisualChangeBuild {
 
         driver.executeScript("smartui.takeScreenshot");
 
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
+        spanText = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[9]/span")).getText();
         Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
         Status = "passed";
         Thread.sleep(800);
