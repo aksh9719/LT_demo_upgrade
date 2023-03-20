@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="LambdaTest_Demo_upgrade" />
         <module name="Java_TestNG_Web-App" />
         <module name="Java-TestNG-Selenium" />
-        <module name="LambdaTest_Demo" />
       </profile>
     </annotationProcessing>
   </component>
