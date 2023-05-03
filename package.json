@@ -1,5 +1,5 @@
 {
-  "name": "Cypress_Lambdatest_Demo",
+  "name": "cypress_lambdatest_demo",
   "version": "0.0.0-development",
   "description": "This is an example app used to showcase Cypress.io testing. For a full reference of our documentation, go to https://docs.cypress.io",
   "main": "index.js",
@@ -11,18 +11,31 @@
     "test": "npx lambdatest-cypress run"
   },
   "author": "Mayank Maurya",
-  "dependencies": {},
-  "devDependencies": {
-    "@applitools/eyes-cypress": "^3.27.8",
-    "@cucumber/cucumber": "^7.3.2",
-    "@faker-js/faker": "^7.6.0",
-    "@lambdatest/node-fetch-sessions": "^1.0.4",
-    "@playwright/test": "1.20.2",
-    "cypress": "^10.11.0",
-    "cypress-image-diff-js": "^1.22.0",
+  "dependencies": {
+
+
     "cypress-mochawesome-reporter": "^3.2.3",
     "lambdatest-cypress-cli": "^3.0.11",
     "playwright": "1.20.2",
+    "@faker-js/faker": "^7.6.0"
+  },
+  "devDependencies": {
+
+    "@cucumber/cucumber": "^7.3.2",
+    "cypress-image-diff-js": "^1.22.0",
+    "@lambdatest/node-fetch-sessions": "^1.0.4",
+    "@playwright/test": "1.20.2",
+    "cypress": "^12.9.0",
+    "@applitools/eyes-cypress": "^3.27.8",
     "typescript": "3.7.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lambdapro/LambdaTest_Demo.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lambdapro/LambdaTest_Demo/issues"
+  },
+  "homepage": "https://github.com/lambdapro/LambdaTest_Demo#readme"
 }

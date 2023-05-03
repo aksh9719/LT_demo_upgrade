@@ -24,13 +24,21 @@
       "reporter_config_file": "base_reporter_config.json",
       "build_name": "build-name",
       "parallels": 1,
+      "feature_file_suppport": false,
       "supportFile": false,
-      "specs": "./cypress/e2e/examples/*.cy.js",
+      "specs": "./cypress/e2e/examples/todo.cy.js",
       "ignore_files": "",
       "network": false,
       "headless": false,
       "npm_dependencies": {
-         "cypress": "10.11.0"
+         "cypress": "12.9.0",
+         "@applitools/eyes-cypress": "^3.27.8",
+         "@cucumber/cucumber": "^7.3.2",
+         "@faker-js/faker": "^7.6.0",
+         "@lambdatest/node-fetch-sessions": "^1.0.4",
+         "cypress-image-diff-js": "^1.22.0",
+         "cypress-mochawesome-reporter": "^7.1.3",
+         "lambdatest-cypress-cli": "git+https://github.com/LambdaTest/lambdatest-cypress-cli.git"
       }
    },
    "tunnel_settings": {

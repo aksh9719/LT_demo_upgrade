@@ -16,6 +16,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.lambdaTestApp.android.AppUploadAndroid.upload;
+
 public class Android1 {
 
         String userName = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
@@ -23,7 +25,7 @@ public class Android1 {
         private String Status = "failed";
         @Test
         public void basicTest() throws IOException,InterruptedException {
-//                upload();
+                upload();
 
                 DesiredCapabilities caps = new DesiredCapabilities();
                 HashMap<String, Object> ltOptions = new HashMap<String, Object>();
@@ -35,6 +37,7 @@ public class Android1 {
                 ltOptions.put("build", "Android");
                 ltOptions.put("name", "Single Test");
                 ltOptions.put("app", "android_appurl");
+
                 caps.setCapability("lt:options", ltOptions);
 
          try{

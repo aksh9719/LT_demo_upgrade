@@ -6,6 +6,7 @@ module.exports = defineConfig({
     "preserveOriginalScreenshot": true,
     "supportFile": false,
   },
+
   defaultCommandTimeout: 20000,
   responseTimeout: 20000,
   requestTimeout: 20000,
@@ -24,6 +25,7 @@ module.exports = defineConfig({
       getCompareSnapshotsPlugin(on, config);
       require('cypress-mochawesome-reporter/plugin')(on);
     },
+    supportFile : false,
   },
 });
 

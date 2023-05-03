@@ -4,10 +4,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.testng.Assert;
@@ -24,8 +21,8 @@ public class TestNGTodo1 {
     @BeforeMethod
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         SafariOptions browserOptions = new SafariOptions();
-        browserOptions.setPlatformName("MacOS Ventura");
-        browserOptions.setBrowserVersion("16.0");
+        browserOptions.setCapability("platformName", "MacOS Ventura");
+        browserOptions.setCapability("platformVersion","16.0");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "akashg");
         ltOptions.put("accessKey", "NwTHBCKHbxKOIYZJdRersjTbKSvOUrzLtkWeM38ghpyRC8Sixh");

@@ -24,8 +24,8 @@ public class TestNGTodo3 {
     @BeforeMethod
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         FirefoxOptions browserOptions = new FirefoxOptions();
-        browserOptions.setPlatformName("Windows 10");
-        browserOptions.setBrowserVersion("109.0");
+//        browserOptions.setPlatformName("Windows 10");
+//        browserOptions.setBrowserVersion("109.0");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "akashg");
         ltOptions.put("accessKey", "NwTHBCKHbxKOIYZJdRersjTbKSvOUrzLtkWeM38ghpyRC8Sixh");

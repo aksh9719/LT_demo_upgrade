@@ -28,8 +28,8 @@ public class Visual_Baseline {
         String hub = "@beta-smartui-hub.lambdatest.com/wd/hub";
 
         ChromeOptions browserOptions = new ChromeOptions();
-        browserOptions.setPlatformName("MacOS Catalina");
-        browserOptions.setBrowserVersion("109.0");
+//        browserOptions.setPlatformName("MacOS Catalina");
+//        browserOptions.setBrowserVersion("109.0");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("project", "Untitled");
         ltOptions.put("networkThrottling", "Regular 4G");
@@ -37,7 +37,8 @@ public class Visual_Baseline {
         ltOptions.put("plugin", "git-testng");
         ltOptions.put("commandLog", true);
         ltOptions.put("video", true);
-        ltOptions.put("smartUI.project", "Demo");
+        ltOptions.put("smartUI.project", "Visual-Demo");
+        ltOptions.put("smartUI.baseline", false);
         browserOptions.setCapability("LT:Options", ltOptions);
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
@@ -84,6 +85,8 @@ public class Visual_Baseline {
 
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li7")).click();
+
+        driver.executeScript("smartui.takeScreenshot=demo");
 
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li8")).click();

@@ -27,8 +27,8 @@ public class VisualChangeBuild {
         ;
         String hub = "@beta-smartui-hub.lambdatest.com/wd/hub";
         ChromeOptions browserOptions = new ChromeOptions();
-        browserOptions.setPlatformName("MacOS Catalina");
-        browserOptions.setBrowserVersion("109.0");
+//        browserOptions.setPlatformName("MacOS Catalina");
+//        browserOptions.setBrowserVersion("109.0");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("project", "Untitled");
         ltOptions.put("networkThrottling", "Regular 4G");
@@ -36,7 +36,7 @@ public class VisualChangeBuild {
         ltOptions.put("plugin", "git-testng");
         ltOptions.put("commandLog", true);
         ltOptions.put("video", true);
-        ltOptions.put("smartUI.project", "Demo");
+        ltOptions.put("smartUI.project", "Visual-Demo");
         browserOptions.setCapability("LT:Options", ltOptions);
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
@@ -93,7 +93,7 @@ public class VisualChangeBuild {
         System.out.println("Checking Another Box");
         driver.findElement(By.name("li9")).click();
 
-        driver.executeScript("smartui.takeScreenshot");
+        driver.executeScript("smartui.takeScreenshot=demo");
 
         spanText = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[9]/span")).getText();
         Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
