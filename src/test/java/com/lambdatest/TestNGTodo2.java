@@ -19,7 +19,8 @@ public class TestNGTodo2 {
 
     private RemoteWebDriver driver;
     private String Status = "failed";
-
+    String userName = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
+    String accessKey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
     @BeforeMethod
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         ChromeOptions browserOptions = new ChromeOptions();
@@ -28,8 +29,8 @@ public class TestNGTodo2 {
 //        browserOptions.setPlatformName("Windows 10");
 //        browserOptions.setBrowserVersion("109.0");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
-        ltOptions.put("username", "akashg");
-        ltOptions.put("accessKey", "NwTHBCKHbxKOIYZJdRersjTbKSvOUrzLtkWeM38ghpyRC8Sixh");
+        ltOptions.put("username", "userName");
+        ltOptions.put("accessKey", "accessKey");
         ltOptions.put("project", "Untitled");
         ltOptions.put("w3c", true);
         browserOptions.setCapability("LT:Options", ltOptions);
